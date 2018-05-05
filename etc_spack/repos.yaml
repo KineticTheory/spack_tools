@@ -1,0 +1,3 @@
+repos:
+- /scratch/vendors/spack.lanl
+- $spack/var/spack/repos/builtin

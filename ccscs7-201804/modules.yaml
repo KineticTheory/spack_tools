@@ -1,0 +1,221 @@
+# spack module refresh --module-type lmod --delete-tree -y %gcc
+# spack module refresh --module-type lmod -y %clang
+#
+# Might need to manually create .modulerc files.
+# -------------------------------------------------------------------------
+modules:
+  enable:
+    - lmod
+  lmod:
+    core_compilers: ['gcc@4.8.5']
+    hierarchy:
+    - mpi
+    - lapack
+    hash_length: 0
+#    all:
+#      suffixes:
+#        '^openblas': openblas
+#        '^netlib-lapack': netlib
+    eospac:
+      environment:
+        set:
+          SESPATHU: /ccs/codes/radtran/physical_data/eos
+          SESAMEPATH: /ccs/codes/radtran/physical_data/eos
+      filter:
+        environment_blacklist: ['PATH']
+    gcc:
+      environment:
+        set:
+          CC: gcc
+          CXX: g++
+          FC: gfortran
+          F90: gfortran
+          F95: gfortran
+          F77: gfortran
+          LCOMPILER: ${PACKAGE}
+          LCOMPILERVER: ${VERSION}
+    libquo:
+      environment:
+        set:
+          QUO_HOME: ${PREFIX}
+    llvm:
+      environment:
+        set:
+          CC: clang
+          CXX: clang++
+          FC: gfortran
+          F90: gfortran
+          F95: gfortran
+          F77: gfortran
+          LCOMPILER: ${PACKAGE}
+          LCOMPILERVER: ${VERSION}
+    totalview:
+      environment:
+        set:
+          TVDSVRLAUNCHCMD: ssh
+          TVROOT: /scratch/vendors/totalview.2017.0.12
+          LM_LICENSE_FILE: /ccs/opt/toolworks/license.dat
+    whitelist:
+      - 'totalview'
+    blacklist:
+      - 'apr'
+      - 'apr-util'
+      - 'atk'
+      - 'cairo'
+# blacklist cmake after cmake%gcc@4.8.5 is installed.  Coordinate with packages.yaml.
+#      - 'cmake'
+      - 'damageproto'
+      - 'dri2proto'
+      - 'dri3proto'
+      - 'elfutils'
+      - 'fixesproto'
+      - 'font-util'
+      - 'fontconfig'
+      - 'freetype'
+      - 'gdbm'
+      - 'gdk-pixbuf'
+      - 'gettext'
+      - 'ghostscript-fonts'
+      - 'glib'
+      - 'glproto'
+      - 'gmp'
+      - 'gobject-introspection'
+      - 'gperf'
+      - 'gtkplus'
+      - 'harfbuzz'
+      - 'help2man'
+      - 'icu4c'
+      - 'inputproto'
+      - 'intltool'
+      - 'isl'
+      - 'kbproto'
+      - 'lcms'
+      - 'libbsd'
+      - 'libcerf'
+      - 'libdrm'
+      - 'libdwarf'
+      - 'libedit'
+      - 'libffi'
+      - 'libgcrypt'
+      - 'libgd'
+      - 'libgpg-error'
+      - 'libice'
+      - 'libiconv'
+      - 'libjpeg-turbo'
+      - 'libmng'
+      - 'libpciaccess'
+      - 'libpfm4'
+      - 'libpng'
+      - 'libpthread-stubs'
+      - 'libsigsegv'
+      - 'libsm'
+      - 'libtiff'
+      - 'libuuid'
+      - 'libx11'
+      - 'libxau'
+      - 'libxcb'
+      - 'libxdamage'
+      - 'libxdmcp'
+      - 'libxext'
+      - 'libxfixes'
+      - 'libxft'
+      - 'libxinerama'
+      - 'libxml2'
+      - 'libxpm'
+      - 'libxrender'
+      - 'libxshmfence'
+      - 'libxslt'
+      - 'lua-luafilesystem'
+      - 'lua-luaposix'
+      - 'm4'
+      - 'mpc'
+      - 'mpfr'
+      - 'nasm'
+      - 'ncurses'
+      - 'openssl'
+      - 'pango'
+      - 'pcre'
+      - 'perl-xml-parser'
+      - 'pixman'
+      - 'pkg-config'
+      - 'presentproto'
+      - 'py-alabaster'
+      - 'py-appdirs'
+      - 'py-babel'
+      - 'py-configparser'
+      - 'py-cycler'
+      - 'py-dateutil'
+      - 'py-docutils'
+      - 'py-enum34'
+      - 'py-flake8'
+      - 'py-functools32'
+      - 'py-git-review'
+      - 'py-gnuplot'
+      - 'py-imagesize'
+      - 'py-jinja2'
+      - 'py-lit'
+      - 'py-mako'
+      - 'py-markupsafe'
+      - 'py-matplotlib'
+      - 'py-mccabe'
+      - 'py-mock'
+      - 'py-nose'
+      - 'py-numpy'
+      - 'py-packaging'
+      - 'py-pbr'
+      - 'py-pillow'
+      - 'py-pycodestyle'
+      - 'py-pyflakes'
+      - 'py-pygments'
+      - 'py-pyparsing'
+      - 'py-pytz'
+      - 'py-requests'
+      - 'py-setuptools'
+      - 'py-six'
+      - 'py-snowballstemmer'
+      - 'py-sphinx'
+      - 'py-sphinx-rtd-theme'
+      - 'py-sphinxcontrib-websupport'
+      - 'py-subprocess32'
+      - 'py-typing'
+      - 'qhull'
+      - 'readline'
+      - 'renderproto'
+      - 'serf'
+      - 'shared-mime-info'
+      - 'sqlite'
+      - 'util-macros'
+      - 'xcb-proto'
+      - 'xextproto'
+      - 'xineramaproto'
+      - 'xproto'
+      - 'xtrans'
+      - 'xz'
+      - 'zip'
+      - 'zlib'
+  prefix_inspections:
+    bin:
+      - PATH
+    man:
+      - MANPATH
+    share/man:
+      - MANPATH
+    share/aclocal:
+      - ACLOCAL_PATH
+    lib:
+      - LIBRARY_PATH
+      - LD_LIBRARY_PATH
+    lib64:
+      - LIBRARY_PATH
+      - LD_LIBRARY_PATH
+    include:
+      - CPATH
+    lib/pkgconfig:
+      - PKG_CONFIG_PATH
+    lib64/pkgconfig:
+      - PKG_CONFIG_PATH
+    '':
+      - CMAKE_PREFIX_PATH
+
+
+# https://github.com/epfl-scitas/spack-packagelist/blob/releases/cornalin.v1/configuration/modules.yaml

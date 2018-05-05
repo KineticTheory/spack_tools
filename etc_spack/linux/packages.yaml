@@ -1,0 +1,81 @@
+# -------------------------------------------------------------------------
+# This file controls default concretization preferences for Spack.
+#
+# Settings here are versioned with Spack and are intended to provide
+# sensible defaults out of the box. Spack maintainers should edit this
+# file to keep it current.
+#
+# Users can override these settings by editing the following files.
+#
+# Per-spack-instance settings (overrides defaults):
+#   $SPACK_ROOT/etc/spack/packages.yaml
+#
+# Per-user settings (overrides default and site settings):
+#   ~/.spack/packages.yaml
+# -------------------------------------------------------------------------
+packages:
+  all:
+    compiler: [gcc@4.8.5, clang@3.9.1, intel, pgi, xl, nag]
+    providers:
+      awk: [gawk]
+      blas: [netlib-lapack]
+      daal: [intel-parallel-studio+daal]
+      elf: [elfutils]
+      golang: [gcc]
+      ipp: [intel-parallel-studio+ipp]
+      lapack: [netlib-lapack]
+      mkl: [intel-parallel-studio+mkl]
+      mpe: [mpe2]
+      mpi: [openmpi, mpich]
+      opencl: [pocl]
+      openfoam: [foam-extend]
+      pil: [py-pillow]
+      scalapack: [netlib-scalapack]
+  boost:
+    variants: [+mpi]
+  cairo:
+    variants: +X
+#  cmake:
+#    buildable: False
+#    paths:
+#      cmake: /scratch/vendors/spack-0.11.2/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/cmake-3.9.4-cscmgi2wki2tcyvvjf4ayh3nufuusr74
+#  expat:
+#    version: [2.2.0]
+# This is the system compiler.  Adding an entry here allows spack to generate an Lmod module.
+#  gcc:
+#    paths:
+#      gcc@4.8.5%gcc@4.8.5: /usr
+  gtkplus:
+    variants: +X
+  hdf5:
+    variants: [+mpi]
+  hypre:
+    variants: [+mpi~internal-superlu]
+  matio:
+    variants: [+hdf5]
+  pango:
+    variants: +X
+  pkg-config:
+    paths:
+      pkg-config: /
+
+# Special external-packages.
+# Only setup to allow spack to generate modulefile
+
+  # bullseyecoverage:
+  #   buildable: False
+  #   paths:
+  #     bullseyecoverage@8.13.5: /scratch/vendors/bullseyecoverage-8.13.5
+  totalview:
+    buildable: False
+    paths:
+       totalview@2017.0.12: /scratch/vendors/totalview.2017.0.12
+
+#  m4:
+#    paths:
+#      m4%clang+sigsegv arch=linux-redhat7-x86_64: /
+#      m4%clang arch=linux-redhat7-x86_64: /
+#  #   buildable: False
+
+
+# https://github.com/epfl-scitas/spack-packagelist/blob/releases/cornalin.v1/configuration/packages.yaml

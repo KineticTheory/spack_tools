@@ -1,0 +1,3 @@
+mirrors:
+  filesystem: file:///scratch/vendors/spack.mirror
+  filesystem-ec: file:///scratch/vendors/spack.mirror.ec

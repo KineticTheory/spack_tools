@@ -1,0 +1,85 @@
+# -------------------------------------------------------------------------
+# This file controls default concretization preferences for Spack.
+#
+# Settings here are versioned with Spack and are intended to provide
+# sensible defaults out of the box. Spack maintainers should edit this
+# file to keep it current.
+#
+# Users can override these settings by editing the following files.
+#
+# Per-spack-instance settings (overrides defaults):
+#   $SPACK_ROOT/etc/spack/packages.yaml
+#
+# Per-user settings (overrides default and site settings):
+#   ~/.spack/packages.yaml
+# -------------------------------------------------------------------------
+packages:
+  all:
+    compiler: [gcc, intel, pgi, clang, xl, nag]
+    providers:
+      awk: [gawk]
+      blas: [netlib-lapack]
+      daal: [intel-daal]
+      elf: [elfutils]
+      gl: [mesa, opengl]
+      glu: [mesa-glu, openglu]
+      golang: [gcc]
+      ipp: [intel-ipp]
+      java: [jdk]
+      lapack: [netlib-lapack]
+      mkl: [intel-mkl]
+      mpe: [mpe2]
+      mpi: [openmpi, mpich]
+      opencl: [pocl]
+      openfoam: [openfoam-com, openfoam-org, foam-extend]
+      pil: [py-pillow]
+      pkgconfig: [pkgconf, pkg-config]
+      scalapack: [netlib-scalapack]
+      szip: [libszip, libaec]
+      tbb: [intel-tbb]
+      jpeg: [libjpeg-turbo, libjpeg]
+  boost:
+    variants: [+mpi]
+  cairo:
+    variants: [+X]
+  cgns:
+    variants: [+mpi]
+#  cmake:
+#    version: [3.11.0]
+#    buildable: False
+#    modules:
+#      cmake@3.11.0: cmake/3.11.0
+#    paths:
+#      cmake@3.11.0: /scratch/kellyt/spack/cmake-3.11.0
+  gtkplus:
+    variants: [+X]
+  hdf5:
+    variants: [+mpi]
+  hypre:
+    variants: [+mpi~internal-superlu+int64]
+  matio:
+    variants: [+hdf5]
+  moab:
+    variants: [+mpi^netlib-lapack]
+  pango:
+    variants: [+X]
+  petsc:
+    variants: [+boost+hdf5+mpi]
+  silo:
+    variants: [+fortran+hdf5+mpi]
+  subversion:
+    variants: [+perl]
+  trilinos:
+    variants: [+nox]
+  vtk:
+    variants: [+qt+python]
+
+# Special external-packages.
+# Only setup to allow spack to generate modulefile
+#
+#  totalview:
+#    buildable: False
+#    paths:
+#       totalview@2017.0.12: /scratch/vendors/totalview.2017.0.12
+
+# https://github.com/epfl-scitas/spack-packagelist/blob/releases/cornalin.v1/configuration/packages.yaml

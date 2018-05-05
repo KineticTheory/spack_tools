@@ -1,0 +1,41 @@
+compilers:
+- compiler:
+    environment: {}
+    extra_rpaths: []
+    flags: {}
+    modules: []
+    operating_system: rhel7
+    paths:
+      cc: /usr/bin/gcc
+      cxx: /usr/bin/g++
+      f77: /usr/bin/gfortran
+      fc: /usr/bin/gfortran
+    spec: gcc@4.8.5
+    target: x86_64
+# - compiler:
+#     environment: {}
+#     extra_rpaths: [/scratch/vendors/spack.20180415/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/llvm-6.0.0-qtihyueuqp7m7meo6lq26yne5f7qoech/lib]
+#     flags:
+#       cxxflags: -std=c++11 -stdlib=libc++
+#     modules: []
+#     operating_system: rhel7
+#     paths:
+#       cc: /scratch/vendors/spack.20180415/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/llvm-6.0.0-qtihyueuqp7m7meo6lq26yne5f7qoech/bin/clang
+#       cxx: /scratch/vendors/spack.20180415/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/llvm-6.0.0-qtihyueuqp7m7meo6lq26yne5f7qoech/bin/clang++
+#       f77: gfortran
+#       fc: gfortran
+#     spec: clang@6.0.0
+#     target: x86_64
+# - compiler:
+#     environment: {}
+#     extra_rpaths: []
+#     flags: {}
+#     modules: []
+#     operating_system: rhel7
+#     paths:
+#       cc: /scratch/vendors/spack.20180415/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/gcc-7.3.0-qrjpi76aeo4bysagruwwfii6oneh56lj/bin/gcc
+#       cxx: /scratch/vendors/spack.20180415/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/gcc-7.3.0-qrjpi76aeo4bysagruwwfii6oneh56lj/bin/g++
+#       f77: /scratch/vendors/spack.20180415/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/gcc-7.3.0-qrjpi76aeo4bysagruwwfii6oneh56lj/bin/gfortran
+#       fc: /scratch/vendors/spack.20180415/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/gcc-7.3.0-qrjpi76aeo4bysagruwwfii6oneh56lj/bin/gfortran
+#     spec: gcc@7.3.0
+#     target: x86_64
