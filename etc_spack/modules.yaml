@@ -1,21 +1,17 @@
-# spack module refresh --module-type lmod --delete-tree -y %gcc
-# spack module refresh --module-type lmod -y %clang
-#
-# Might need to manually create .modulerc files.
-# -------------------------------------------------------------------------
-modules::
+modules:
   enable::
     - lmod
   lmod:
-    core_compilers: ['gcc@4.8.5']
+    core_compilers:
+      - gcc@7.4.0
     hierarchy:
-    - 'mpi'
-    - 'lapack'
+      - mpi
+      - lapack
     hash_length: 0
-    all:
-      suffixes:
-        '^openblas': openblas
-        '^netlib-lapack': netlib
+#    all:
+#      suffixes:
+#        ^openblas: openblas
+#        ^netlib-lapack: netlib
     libquo:
       environment:
         set:
@@ -25,10 +21,10 @@ modules::
         set:
           CC: clang
           CXX: clang++
-          FC: gfortran
           F90: gfortran
           F95: gfortran
           F77: gfortran
+          FC: gfortran
           LCOMPILER: ${PACKAGE}
           LCOMPILERVER: ${VERSION}
     gcc:
@@ -36,183 +32,151 @@ modules::
         set:
           CC: gcc
           CXX: g++
-          FC: gfortran
           F90: gfortran
           F95: gfortran
           F77: gfortran
+          FC: gfortran
           LCOMPILER: ${PACKAGE}
           LCOMPILERVER: ${VERSION}
-    # bullseyecoverage:
-    #   environment:
-    #     set:
-    #       BECROOT=/scratch/vendors/bullseyecoverage-8.13.5
     totalview:
       environment:
         set:
           TVDSVRLAUNCHCMD: ssh
-          TVROOT: /scratch/vendors/totalview.2017.0.12
-          LM_LICENSE_FILE: /ccs/opt/toolworks/license.dat
+          TVROOT: /home/kt/totalview
     whitelist:
-      - 'totalview'
+      - totalview
     blacklist:
-      - 'apr'
-      - 'apr-util'
-      - 'atk'
-      - 'cairo'
-#      - 'cmake'
-      - 'damageproto'
-      - 'dri2proto'
-      - 'dri3proto'
-      - 'elfutils'
-      - 'fixesproto'
-      - 'font-util'
-      - 'fontconfig'
-      - 'freetype'
-      - 'gdbm'
-      - 'gdk-pixbuf'
-      - 'gettext'
-      - 'ghostscript-fonts'
-      - 'glib'
-      - 'glproto'
-      - 'gmp'
-      - 'gobject-introspection'
-      - 'gperf'
-      - 'gtkplus'
-      - 'harfbuzz'
-      - 'help2man'
-      - 'icu4c'
-      - 'inputproto'
-      - 'intltool'
-      - 'isl'
-      - 'kbproto'
-      - 'libbsd'
-      - 'lcms'
-      - 'libcerf'
-      - 'libdrm'
-      - 'libdwarf'
-      - 'libedit'
-      - 'libffi'
-      - 'libgcrypt'
-      - 'libgd'
-      - 'libgpg-error'
-      - 'libice'
-      - 'libiconv'
-      - 'libjpeg-turbo'
-      - 'libmng'
-      - 'libpciaccess'
-      - 'libpng'
-      - 'libpthread-stubs'
-      - 'libsigsegv'
-      - 'libsm'
-      - 'libtiff'
-      - 'libtool'
-      - 'libuuid'
-      - 'libx11'
-      - 'libxau'
-      - 'libxcb'
-      - 'libxdamage'
-      - 'libxdmcp'
-      - 'libxext'
-      - 'libxfixes'
-      - 'libxft'
-      - 'libxinerama'
-      - 'libxml2'
-      - 'libxpm'
-      - 'libxrender'
-      - 'libxshmfence'
-      - 'libxslt'
-      - 'lua-luafilesystem'
-      - 'lua-luaposix'
-      - 'm4'
-      - 'mpc'
-      - 'mpfr'
-      - 'nasm'
-      - 'ncurses'
-      - 'openmpi'
-      - 'openssl'
-      - 'pango'
-      - 'pcre'
-      - 'perl-xml-parser'
-      - 'pixman'
-      - 'pkg-config'
-      - 'presentproto'
-      - 'py-alabaster'
-      - 'py-appdirs'
-      - 'py-babel'
-      - 'py-configparser'
-      - 'py-cycler'
-      - 'py-dateutil'
-      - 'py-docutils'
-      - 'py-enum34'
-      - 'py-flake8'
-      - 'py-functools32'
-      - 'py-git-review'
-      - 'py-gnuplot'
-      - 'py-imagesize'
-      - 'py-jinja2'
-      - 'py-lit'
-      - 'py-mako'
-      - 'py-markupsafe'
-      - 'py-matplotlib'
-      - 'py-mccabe'
-      - 'py-mock'
-      - 'py-nose'
-      - 'py-numpy'
-      - 'py-packaging'
-      - 'py-pbr'
-      - 'py-pillow'
-      - 'py-pycodestyle'
-      - 'py-pyflakes'
-      - 'py-pygments'
-      - 'py-pyparsing'
-      - 'py-pytz'
-      - 'py-requests'
-      - 'py-setuptools'
-      - 'py-six'
-      - 'py-snowballstemmer'
-      - 'py-sphinx'
-      - 'py-sphinx-rtd-theme'
-      - 'py-sphinxcontrib-websupport'
-      - 'py-subprocess32'
-      - 'py-typing'
-      - 'qhull'
-      - 'readline'
-      - 'renderproto'
-      - 'serf'
-      - 'shared-mime-info'
-      - 'sqlite'
-      - 'util-macros'
-      - 'xcb-proto'
-      - 'xextproto'
-      - 'xineramaproto'
-      - 'xproto'
-      - 'xtrans'
-      - 'xz'
-      - 'zip'
-      - 'zlib'
-  prefix_inspections:
-    bin:
-      - PATH
-    man:
-      - MANPATH
-    share/man:
-      - MANPATH
-    share/aclocal:
-      - ACLOCAL_PATH
-    lib:
-      - LIBRARY_PATH
-      - LD_LIBRARY_PATH
-    lib64:
-      - LIBRARY_PATH
-      - LD_LIBRARY_PATH
-    include:
-      - CPATH
-    lib/pkgconfig:
-      - PKG_CONFIG_PATH
-    lib64/pkgconfig:
-      - PKG_CONFIG_PATH
-    '':
-      - CMAKE_PREFIX_PATH
-
-
-# https://github.com/epfl-scitas/spack-packagelist/blob/releases/cornalin.v1/configuration/modules.yaml
+      - apr
+      - apr-util
+      - at-spi2-atk
+      - atk
+      - autoconf
+      - automake
+      - bdw-gc
+      - binutils
+      - cairo
+      - damageproto
+      - dbus
+      - diffutils
+      - fixesproto
+      - font
+      - font-util
+      - fontconfig
+      - freetype
+      - gdb
+      - gdbm
+      - gdk
+      - gdk-pixbuf
+      - gettext
+      - ghostscript-fonts
+      - glib
+      - glm
+      - glproto
+      - gmp
+      - gnutls
+      - gobject
+      - gobject-introspection
+      - gperf
+      - gtkplus
+      - guile
+      - harfbuzz
+      - help2man
+      - icu4c
+      - inputproto
+      - intltool
+      - kbproto
+      - lcms
+      - libassuan
+      - libatomic-ops
+      - libbsd
+      - libcerf
+      - libedit
+      - libffi
+      - libgcrypt
+      - libgd
+      - libgpg
+      - libgpg-error
+      - libice
+      - libiconv
+      - libjpeg
+      - libksba
+      - libmng
+      - libpciaccess
+      - libpfm4
+      - libpng
+      - libpthread
+      - libpthread-stubs
+      - libsigsegv
+      - libsm
+      - libssh2
+      - libtiff
+      - libtool
+      - libunistring
+      - libunwind
+      - libuuid
+      - libx11
+      - libxau
+      - libxcb
+      - libxdmcp
+      - libxext
+      - libxft
+      - libxinerama
+      - libxml2
+      - libxpm
+      - libxrender
+      - libxslt
+      - lmod
+      - lua
+      - lua-luafilesystem
+      - m4
+      - nasm
+      - ncurses
+      - nettle
+      - npth
+      - numactl
+      - openssl
+      - pango
+      - papi
+      - patchelf
+      - pcre
+      - pixman
+      - pkg
+      - pkgconf
+      - py-alabaster
+      - py-babel
+      - py-docutils
+      - py-imagesize
+      - py-jinja2
+      - py-lit
+      - py-markupsafe
+      - py-packaging
+      - py-pygments
+      - py-pyparsing
+      - py-pytz
+      - py-requests
+      - py-setuptools
+      - py-six
+      - py-snowballstemmer
+      - py-sphinx
+      - py-sphinx-rtd-theme
+      - py-sphinxcontrib-websupport
+      - py-typing
+      - readline
+      - renderproto
+      - serf
+      - shared
+      - sqlite
+      - swig
+      - tar
+      - tcl
+      - texinfo
+      - util
+      - util-macros
+      - xcb
+      - xcb-proto
+      - xextproto
+      - xineramaproto
+      - xproto
+      - xtrans
+      - xz
+      - zlib
