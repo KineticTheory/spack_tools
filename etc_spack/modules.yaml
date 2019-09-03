@@ -197,7 +197,7 @@ modules:
       - "libsigsegv"
     all:
       environment:
-        variables:
+        set:
            SPACK_MODULE_PACKAGE: '"${PACKAGE}"'
            SPACK_MODULE_VERSION: '"${VERSION}"'
            SPACK_MODULE_PREFIX: '"${PREFIX}"'
