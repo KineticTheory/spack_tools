@@ -1,6 +1,7 @@
 modules:
   enable::
     - lmod
+    - tcl
   lmod:
     core_compilers:
       - gcc@7.4.0
@@ -12,6 +13,24 @@ modules:
 #      suffixes:
 #        ^openblas: openblas
 #        ^netlib-lapack: netlib
+    eospac:
+      environment:
+        set:
+          SESPATHU: /ccs/codes/radtran/physical_data/eos
+          SESAMEPATH: /ccs/codes/radtran/physical_data/eos
+      filter:
+        environment_blacklist: ['PATH']
+    gcc:
+      environment:
+        set:
+          CC: gcc
+          CXX: g++
+          F90: gfortran
+          F95: gfortran
+          F77: gfortran
+          FC: gfortran
+          LCOMPILER: ${PACKAGE}
+          LCOMPILERVER: ${VERSION}
     libquo:
       environment:
         set:
@@ -21,17 +40,6 @@ modules:
         set:
           CC: clang
           CXX: clang++
-          F90: gfortran
-          F95: gfortran
-          F77: gfortran
-          FC: gfortran
-          LCOMPILER: ${PACKAGE}
-          LCOMPILERVER: ${VERSION}
-    gcc:
-      environment:
-        set:
-          CC: gcc
-          CXX: g++
           F90: gfortran
           F95: gfortran
           F77: gfortran
@@ -180,3 +188,53 @@ modules:
       - xtrans
       - xz
       - zlib
+  tcl:
+    hash_length: 0
+    naming_scheme: '${PACKAGE}/${VERSION}-${COMPILERNAME}-${COMPILERVER}'
+    blacklist:
+      - "bzip2"
+      - "glm"
+      - "libsigsegv"
+    all:
+      environment:
+        variables:
+           SPACK_MODULE_PACKAGE: '"${PACKAGE}"'
+           SPACK_MODULE_VERSION: '"${VERSION}"'
+           SPACK_MODULE_PREFIX: '"${PREFIX}"'
+           SPACK_MODULE_SPEC: '"${SPEC}"'
+           SPACK_MODULE_HASH: '"${HASH}"'
+           SPACK_MODULE_ARCHITECTURE: '"${ARCHITECTURE}"'
+           SPACK_MODULE_COMPILERNAME: '"${COMPILERNAME}"'
+           SPACK_MODULE_COMPILERVER: '"${COMPILERVER}"'
+           SPACK_MODULE_COMPILERFLAGS: '"${COMPILERFLAGS}"'
+      filter:
+        environment_blacklist: [PATH, MANPATH, ACLOCAL_PATH, LIBRARY_PATH, LD_LIBRARY_PATH, CPATH, PKG_CONFIG_PATH, CMAKE_PREFIX_PATH]
+      suffixes:
+        +pic: pic
+        '^intel-mpi@5.1.3': intel-mpi-5.1.3
+        '^intel-mpi@2018.2': intel-mpi-2018.2
+        '^intel-mpi@2018.3': intel-mpi-2018.3
+        '^mpich@7.4.2': mpt-7.4.2
+        '^mpich@7.5.2': mpt-7.5.2
+        '^mpich@7.6.2': mpt-7.6.2
+        '^mpich@7.7.0': mpt-7.7.0
+        '^mpich@7.7.1': mpt-7.7.1
+        '^mpich@7.7.3': mpt-7.7.3
+        '^mpich@7.7.4': mpt-7.7.4
+        '^mpich@7.7.4.4': mpt-7.7.4.4
+        '^openmpi@1.10.5': openmpi-1.10.5
+        '^openmpi@2.1.1': openmpi-2.1.1
+        '^openmpi@2.1.2': openmpi-2.1.2
+        '^paraview@5.4.0-osmesa': paraview-5.4.0-osmesa
+        '^paraview@5.5.2-osmesa': paraview-5.5.2-osmesa
+        '^python@2.7-anaconda-4.1.1': python-2.7-anaconda-4.1.1
+        '^python@2.7-anaconda-5.0.1': python-2.7-anaconda-5.0.1
+        '^python@3.5-anaconda-4.1.1': python-3.5-anaconda-4.1.1
+        '^python@3.6-anaconda-5.0.1': python-3.6-anaconda-5.0.1
+        '^python@2.7-system': python-2.7-system
+        '^shapo@170512': shapo-170512
+        '^shapo@170825': shapo-170825
+        '^shapo@171108': shapo-171108
+        '^shapo@180607': shapo-180607
+        '^openblas': openblas
+        '^netlib-lapack': netlib

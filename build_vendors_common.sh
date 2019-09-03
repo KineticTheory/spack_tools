@@ -38,7 +38,9 @@ if ! [[ -f $SPACK_ROOT/etc/spack/linux/compilers.yaml ]]; then
   spack compilers
 fi
 
-spack config get config
+# spack config get config
+# 'blame' added 2018-05-10
+spack config blame config
 
 core_mods_registered=`echo $MODULEPATH | grep -c "spack/lmod/linux-rhel7-x86_64/Core"`
 if [[ $core_mods_registered == 0 ]]; then

@@ -11,10 +11,13 @@
 # 3. Ensure that downloaded source code is not saved to a mirror where sources
 #    are public.
 
+
+# sg ccsrad
+# umask 0007
+
 #------------------------------------------------------------------------------#
 # Common setup
 #------------------------------------------------------------------------------#
-
 export rscriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $rscriptdir/build_vendors_common.sh
 
@@ -165,6 +168,7 @@ done
 # Check file permissions
 #------------------------------------------------------------------------------#
 
+run "chmod -R g+rX,o=g $SPACK_ROOT/share/spack/lmod"
 run "chgrp -R ccsrad $EC_VENDOR_DIR"
 run "chmod -R g+rX,o-rwX $EC_VENDOR_DIR"
 run "find $EC_VENDOR_DIR -type d -exec chmod g+s {} \;"
