@@ -60,6 +60,7 @@ modules:
       - atk
       - autoconf
       - automake
+      - bdftopcf
       - bdw-gc
       - binutils
       - cairo
@@ -70,6 +71,7 @@ modules:
       - font
       - font-util
       - fontconfig
+      - fontsproto
       - freetype
       - gdb
       - gdbm
@@ -100,6 +102,7 @@ modules:
       - libcerf
       - libedit
       - libffi
+      - libfontenc
       - libgcrypt
       - libgd
       - libgpg
@@ -127,6 +130,7 @@ modules:
       - libxcb
       - libxdmcp
       - libxext
+      - libxfont
       - libxft
       - libxinerama
       - libxml2
@@ -135,8 +139,11 @@ modules:
       - libxslt
       - lmod
       - lua
+      - lua-luaposix
       - lua-luafilesystem
       - m4
+      - mkfontdir
+      - mkfontscale
       - nasm
       - ncurses
       - nettle
